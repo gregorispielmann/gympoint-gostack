@@ -8,15 +8,16 @@ class StudentController {
 
     if (q) {
       const students = await Student.findAll({
+        order: [['id', 'DESC']],
         where: { name: { [Op.iLike]: `%${q}%` } },
       });
 
       return res.json(students);
     }
 
-    const students = await Student.findAll();
-
-    if (!students) return res.status(400).json({ error: 'No students found' });
+    const students = await Student.findAll({
+      order: [['id', 'DESC']],
+    });
 
     return res.json(students);
   }
@@ -41,7 +42,9 @@ class StudentController {
     if (!(await schema.isValid(req.body)))
       return res.status(400).json({ error: 'Validation failed' });
 
-    const studentExists = Student.findOne({ where: { email: req.body.email } });
+    const studentExists = await Student.findOne({
+      where: { email: req.body.email },
+    });
 
     if (studentExists)
       res.status(400).json({ error: 'Student already exists' });
@@ -72,7 +75,7 @@ class StudentController {
     const { email } = req.body;
 
     if (email !== student.email) {
-      const studentExists = Student.findOne({
+      const studentExists = await Student.findOne({
         where: { email: req.body.email },
       });
 

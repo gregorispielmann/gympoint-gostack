@@ -1,5 +1,7 @@
 import * as Yup from 'yup';
 import { addMonths, parseISO } from 'date-fns';
+import { Op } from 'sequelize';
+
 import Registration from '../models/Registration';
 import Plan from '../models/Plan';
 import Student from '../models/Student';
@@ -9,15 +11,71 @@ import RegistrationMail from '../jobs/RegistrationMail';
 
 class RegistrationController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, q } = req.query;
+
+    if (q) {
+      const registrations = await Registration.findAll({
+        limit: 10,
+        offset: (page - 1) * 10,
+        order: ['created_at'],
+        include: [
+          {
+            model: Student,
+            as: 'student',
+            attributes: ['name', 'email'],
+            where: {
+              name: { [Op.iLike]: `%${q}%` },
+            },
+          },
+          {
+            model: Plan,
+            as: 'plan',
+            attributes: ['title', 'duration', 'price'],
+          },
+        ],
+      });
+
+      return res.json(registrations);
+    }
 
     const registrations = await Registration.findAll({
       limit: 10,
       offset: (page - 1) * 10,
-      attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
+      order: ['created_at'],
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Plan,
+          as: 'plan',
+          attributes: ['title', 'duration', 'price'],
+        },
+      ],
     });
 
     return res.json(registrations);
+  }
+
+  async show(req, res) {
+    const registration = await Registration.findByPk(req.params.id, {
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Plan,
+          as: 'plan',
+          attributes: ['title', 'duration', 'price'],
+        },
+      ],
+    });
+
+    return res.json(registration);
   }
 
   async store(req, res) {
@@ -67,6 +125,7 @@ class RegistrationController {
 
     // SEND email
     await Queue.add(RegistrationMail.key, {
+      student_id,
       name,
       email,
       start_date,

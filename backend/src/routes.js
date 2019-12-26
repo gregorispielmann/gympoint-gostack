@@ -39,18 +39,21 @@ routes.delete('/students/:id', StudentController.delete);
 
 /** PLANS */
 routes.get('/plans', PlanController.index);
+routes.get('/plans/:id', PlanController.show);
 routes.post('/plans', PlanController.store);
 routes.put('/plans/:id', PlanController.update);
 routes.delete('/plans/:id', PlanController.delete);
 
 /** REGISTRATIONS */
 routes.get('/registrations', RegistrationController.index);
+routes.get('/registrations/:id', RegistrationController.show);
 routes.post('/registrations', RegistrationController.store);
 routes.put('/registrations/:id', RegistrationController.update);
 routes.delete('/registrations/:id', RegistrationController.delete);
 
 /** HELP ORDERS */
 routes.get('/help-orders/', AnswerController.index);
+routes.get('/help-orders/:id', AnswerController.show);
 routes.post('/help-orders/:id/answer', AnswerController.store);
 
 export default routes;

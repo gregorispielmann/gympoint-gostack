@@ -9,6 +9,7 @@ class RegistrationMail {
 
   async handle({ data }) {
     const {
+      student_id,
       name,
       email,
       start_date,
@@ -24,6 +25,7 @@ class RegistrationMail {
       subject: 'Bem-vindo(a) a GymPoint!',
       template: 'registration',
       context: {
+        id: student_id,
         student: name,
         start_date: format(parseISO(start_date), "dd 'de' MMMM 'de' yyyy", {
           locale: ptBR,

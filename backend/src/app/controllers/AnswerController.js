@@ -13,6 +13,28 @@ class AnswerController {
       where: { answer: null },
       limit: 10,
       offset: (page - 1) * 10,
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    return res.json(helpOrders);
+  }
+
+  async show(req, res) {
+    const helpOrders = await HelpOrder.findAll({
+      where: { answer: null, id: req.params.id },
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name'],
+        },
+      ],
     });
 
     return res.json(helpOrders);
