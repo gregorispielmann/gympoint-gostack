@@ -9,6 +9,7 @@ class HelpOrderController {
 
     const helpOrders = await HelpOrder.findAll({
       where: { student_id: id },
+      order: [['updatedAt', 'DESC']],
       limit: 5,
       offset: (page - 1) * 5,
     });

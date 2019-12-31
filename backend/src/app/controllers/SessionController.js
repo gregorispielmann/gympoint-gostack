@@ -1,9 +1,32 @@
 import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
 import User from '../models/User';
+import Registration from '../models/Registration';
+
 import authConfig from '../../config/auth';
 
 class SessionController {
+  async show(req, res) {
+    const schema = Yup.object().shape({
+      id: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(req.params)))
+      return res.status(400).json({ error: 'Validation failed' });
+
+    const { id } = req.params;
+
+    const registration = await Registration.findOne({
+      where: { student_id: id },
+      attributes: ['id', 'student_id', 'active'],
+    });
+
+    if (!registration)
+      return res.status(401).json({ error: 'Registration not found' });
+
+    return res.json(registration);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       email: Yup.string()

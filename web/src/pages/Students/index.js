@@ -28,11 +28,18 @@ export default function Students() {
 
   async function handleDelete(id, name) {
     if (window.confirm(`Deseja realmente excluir ${name}?`)) {
-      const data = await api.delete(`students/${id}`);
-      toast.success(`Aluno ${data.data.name} removido com sucesso!`);
+      try {
+        const res = await api.delete(`students/${id}`);
 
-      const res = await api.get(`students?q=${query}`);
-      setStudents(res.data);
+        toast.success(`Aluno ${res.data.name} removido com sucesso!`);
+
+        const studentData = await api.get(`students?q=${query}`);
+        setStudents(studentData.data);
+      } catch (e) {
+        toast.error(
+          'Erro ao remover aluno! Verifique se não possui matrícula!'
+        );
+      }
     }
   }
 

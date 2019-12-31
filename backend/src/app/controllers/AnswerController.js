@@ -20,6 +20,7 @@ class AnswerController {
           attributes: ['name'],
         },
       ],
+      order: [['updatedAt', 'DESC']],
     });
 
     return res.json(helpOrders);

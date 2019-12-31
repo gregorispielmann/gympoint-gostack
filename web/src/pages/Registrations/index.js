@@ -31,11 +31,16 @@ export default function Students() {
 
   async function handleDelete(id, name) {
     if (window.confirm(`Deseja realmente excluir a matrícula de ${name}?`)) {
-      await api.delete(`registrations/${id}`);
-      toast.success(`Matrícula de ${name} removida com sucesso!`);
+      try {
+        const res = await api.delete(`registrations/${id}`);
 
-      const res = await api.get(`registrations?q=${query}`);
-      setRegistrations(res.data);
+        toast.success(`Matrícula de ${name} removida com sucesso!`);
+
+        const data = await api.get(`registrations?q=${query}`);
+        setRegistrations(data.data);
+      } catch (e) {
+        toast.error('Erro ao remover o matrícula!');
+      }
     }
   }
 

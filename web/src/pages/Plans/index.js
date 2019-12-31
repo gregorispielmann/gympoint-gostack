@@ -26,11 +26,15 @@ export default function Plans() {
 
   async function handleDelete(id, title) {
     if (window.confirm(`Deseja realmente excluir ${title}?`)) {
-      const data = await api.delete(`plans/${id}`);
-      toast.success(`Plano ${data.data.title} removido com sucesso!`);
+      try {
+        const data = await api.delete(`plans/${id}`);
+        toast.success(`Plano ${data.data.title} removido com sucesso!`);
 
-      const res = await api.get(`plans`);
-      setPlans(res.data);
+        const res = await api.get(`plans`);
+        setPlans(res.data);
+      } catch (e) {
+        toast.error('Erro ao remover o plano!');
+      }
     }
   }
 

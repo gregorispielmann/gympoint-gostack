@@ -174,9 +174,13 @@ class RegistrationController {
   async delete(req, res) {
     const registration = await Registration.findByPk(req.params.id);
 
-    registration.destroy();
+    try {
+      await registration.destroy();
+    } catch (e) {
+      res.status(400).json(e.parent.code);
+    }
 
-    return res.json({ message: 'Registration deleted' });
+    return res.json(registration);
   }
 }
 

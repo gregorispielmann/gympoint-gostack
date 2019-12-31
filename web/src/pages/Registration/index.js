@@ -33,7 +33,6 @@ function showError(message) {
   );
 }
 
-
 export default function Registration({ location }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());

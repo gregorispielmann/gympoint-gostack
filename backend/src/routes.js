@@ -18,10 +18,11 @@ const routes = new Router();
 
 /** CREATE A SESSION */
 routes.post('/sessions', SessionController.store);
+routes.get('/sessions/:id', SessionController.show);
 
 /** CHECKIN */
 routes.get('/students/:id/checkins', CheckinController.index);
-routes.post('/students/:id/checkins', CheckinController.store);
+routes.post('/students/:id/checkin', CheckinController.store);
 
 /** HELP ORDERS */
 routes.get('/students/:id/help-orders', HelpOrderController.index);

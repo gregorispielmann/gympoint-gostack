@@ -1,21 +1,25 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, View, Text, StatusBar } from 'react-native';
 
 import './config/ReactotronConfig';
 
-export default function App() {
-  console.tron.log('Olá Pessoal!');
+import { StatusBar } from 'react-native';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
+import App from './App';
+
+import { store, persistor } from './store';
+
+export default function index() {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <View>
-            <Text>Olá</Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+
+          <App />
+        </PersistGate>
+      </Provider>
     </>
   );
 }

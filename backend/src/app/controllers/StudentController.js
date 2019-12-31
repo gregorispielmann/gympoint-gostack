@@ -91,8 +91,11 @@ class StudentController {
   async delete(req, res) {
     const student = await Student.findByPk(req.params.id);
 
-    student.destroy();
-
+    try {
+      await student.destroy();
+    } catch (e) {
+      res.status(400).json({ message: e.parent.code });
+    }
     res.json(student);
   }
 }

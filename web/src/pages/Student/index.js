@@ -79,8 +79,9 @@ export default function Student({ location }) {
   function handleSubmit({ name, email, age, weight, height }) {
     if (!editing) {
       dispatch(addStudentRequest(name, email, age, weight, height));
+    } else {
+      dispatch(updateStudentRequest(id, name, email, age, weight, height));
     }
-    dispatch(updateStudentRequest(id, name, email, age, weight, height));
   }
 
   return (

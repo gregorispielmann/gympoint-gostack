@@ -26,6 +26,11 @@ export default function Modal({ show, id, onClose }) {
   }, [id, show]);
 
   async function handleAnswer() {
+    if (answer.length === 0) {
+      toast.error('Sua resposta não pode estar em branco!');
+      return false;
+    }
+
     try {
       await api.post(`/help-orders/${id}/answer`, {
         answer,
