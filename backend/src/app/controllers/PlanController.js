@@ -3,7 +3,9 @@ import Plan from '../models/Plan';
 
 class PlansController {
   async index(req, res) {
-    const plans = await Plan.findAll();
+    const plans = await Plan.findAll({
+      order: [['duration', 'ASC']],
+    });
 
     return res.json(plans);
   }
