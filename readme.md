@@ -107,6 +107,21 @@ $ yarn start
 To run react application
 ```
 
+### Mobile (:apple: iOS Only)
+
+After run backend, inside the mobile folder run commands below.
+
+```
+$ yarn
+To install all dependencies
+
+$ cd ios && pod instal && cd ..
+To install all cocoa pods dependencies
+
+$ react-native run-ios
+To run react application
+```
+
 ## 🎈 Usage <a name="usage"></a>
 
 ### Web
