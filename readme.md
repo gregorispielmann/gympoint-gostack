@@ -16,7 +16,7 @@
 
 <p align="center"> This app is a full gym manager called GymPoint.
 <br>
-In this challenge was built some basic funcionalities to the gym manager and students.  The concept was a web app to control students, registrations, plans and help orders made by students. After we made a Mobile App (iOS Only) for the students made checkins at the gym and to publish help orders to the gym. 
+In this challenge was built some basic funcionalities to the gym manager and students.  The concept was a web app to control students, registrations, plans and help orders made by students. After we made a Mobile App (iOS Only) for the students do checkins at the gym and to publish help orders to the gym. 
     <br> 
 </p>
 
