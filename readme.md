@@ -24,12 +24,10 @@ In this challenge was built some basic funcionalities to the gym manager and stu
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
+- [TODO](#todo)
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
@@ -126,7 +124,7 @@ To run react application
 
 ### Web
 
-Running the app you will signin with
+Running the app you will signin with login info below
 
 ```
 Login: admin@gympoint.com
@@ -135,7 +133,7 @@ Password: 123456
 
 ### Mobile
 
-You will only need an ID from a student with a registration active
+You will only need an ID from a student with an active registration
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -154,6 +152,11 @@ You will only need an ID from a student with a registration active
 
 - [@rockeseat](https://rocketseat.com.br/bootcamp) - Idea & Initial template
 - [@gregorispielmann](https://github.com/gregorispielmann) - Back-end, Front-end and Mobile App development
+
+## TODO <a name="todo"></a>
+
+- Android mobile app
+- Aditional features to web and mobile
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
