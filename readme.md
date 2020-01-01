@@ -71,7 +71,7 @@ $ docker run --name redisgympoint -p 6363:6379 -d -t redis:alpine
 To create the container to Redis
 ```
 
-## Backend
+### Backend
 
 After create and run all containers you will need to initialize the backend.
 
@@ -88,14 +88,14 @@ To seed database with fake data
 
 **ATTENTION! Before you start the development mode of backend, you will need edit the .envexample to your information and rename the file to .env**
 
-After this you only need to run command above
+After this you only need to run command below
 
 ```
 $ yarn dev
 This will start backend in dev mode
 ```
 
-## Frontend (Web)
+### Frontend (Web)
 
 After run backend.
 
@@ -109,7 +109,18 @@ To run react application
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+### Web
+
+Running the app you will signin with
+
+```
+Login: admin@gympoint.com
+Password: 123456
+```
+
+### Mobile
+
+You will only need an ID from a student with a registration active
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
