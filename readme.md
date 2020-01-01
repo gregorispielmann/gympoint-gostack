@@ -103,9 +103,8 @@ Add additional notes about how to deploy this on a live system.
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+- [@rockeseat](https://rocketseat.com.br/bootcamp) - Idea & Initial template
+- [@gregorispielmann](https://github.com/gregorispielmann) - Back-end, Front-end and Mobile App development
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
