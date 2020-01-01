@@ -86,7 +86,7 @@ $ yarn sequelize db:seed:all
 To seed database with fake data
 ```
 
-**_ Before you start the development mode of backend, you will need edit the .envexample to your information and rename the file to .env _**
+**Before you start the development mode of backend, you will need edit the .envexample to your information and rename the file to .env**
 
 ```
 $ yarn dev
