@@ -86,7 +86,9 @@ $ yarn sequelize db:seed:all
 To seed database with fake data
 ```
 
-**Before you start the development mode of backend, you will need edit the .envexample to your information and rename the file to .env**
+**ATTENTION! Before you start the development mode of backend, you will need edit the .envexample to your information and rename the file to .env**
+
+After this you only need to run command above
 
 ```
 $ yarn dev
@@ -98,13 +100,11 @@ This will start backend in dev mode
 After run backend.
 
 ```
-
-\$ yarn
+$ yarn
 To install all dependencies
 
-\$ yarn start
+$ yarn start
 To run react application
-
 ```
 
 ## 🎈 Usage <a name="usage"></a>
