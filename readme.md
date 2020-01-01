@@ -34,7 +34,7 @@ In this challenge was built some basic funcionalities to the gym manager and stu
 
 ## 🧐 About <a name = "about"></a>
 
-This project was made to be a full stack application including front-end, back-end and mobile and will be used to the Rocketseat Gostack 9 certification.
+This project was made to be a full stack application including front-end, back-end and mobile and will be used to the [Rocketseat](https://github.com/rocketseat) Gostack 9 certification.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
