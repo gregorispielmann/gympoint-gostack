@@ -73,11 +73,17 @@ To create the container to Redis
 
 ## Backend
 
-To initialize the backend, enter backend folder and run yarn to install all dependencies then run yarn dev to initialize the backend in dev mode.
+After create and run all containers you will need to initialize the backend.
 
 ```
 $ yarn
 To install all dependencies
+
+$ yarn sequelize db:migrate
+To run all migrations to database
+
+$ yarn sequelize db:seed:all
+To seed database with fake data
 
 $ yarn dev
 This will start backend in dev mode
