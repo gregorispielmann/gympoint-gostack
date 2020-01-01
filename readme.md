@@ -28,7 +28,6 @@ In this challenge was built some basic funcionalities to the gym manager and stu
 - [Built Using](#built_using)
 - [Authors](#authors)
 - [TODO](#todo)
-- [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -157,13 +156,3 @@ You will only need an ID from a student with an active registration
 
 - Android mobile app
 - Aditional features to web and mobile
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
-
-```
-
-```
