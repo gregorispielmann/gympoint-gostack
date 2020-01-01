@@ -71,22 +71,17 @@ $ docker run --name redisgympoint -p 6363:6379 -d -t redis:alpine
 To create the container to Redis
 ```
 
-### Backend
+## Backend
 
-To initialize the backend, enter backend folder and run yarn to install all dependencies. After this run the commands above to run the backend.
+To initialize the backend, enter backend folder and run yarn to install all dependencies then run yarn dev to initialize the backend in dev mode.
 
 ```
+$ yarn
+To install all dependencies
+
 $ yarn dev
 This will start backend in dev mode
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
 
 ## 🎈 Usage <a name="usage"></a>
 
@@ -102,7 +97,7 @@ Add notes about how to use the system.
 - [ReactJs](https://reactjs.org/) - Web Framework
 - [React Native](https://react-native.org/) - Mobile Framework
 - [Styled Components](https://www.styled-components.com/) - CSS in Javascript library
-  and others
+- and others
 
 ## ✍️ Authors <a name = "authors"></a>
 
