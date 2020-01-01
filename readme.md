@@ -84,9 +84,27 @@ To run all migrations to database
 
 $ yarn sequelize db:seed:all
 To seed database with fake data
+```
 
+**_ Before you start the development mode of backend, you will need edit the .envexample to your information and rename the file to .env _**
+
+```
 $ yarn dev
 This will start backend in dev mode
+```
+
+## Frontend (Web)
+
+After run backend.
+
+```
+
+\$ yarn
+To install all dependencies
+
+\$ yarn start
+To run react application
+
 ```
 
 ## 🎈 Usage <a name="usage"></a>
@@ -98,6 +116,7 @@ Add notes about how to use the system.
 - [Docker](https://www.docker.com/) - Container Management
 - [Redis](https://redis.io/) - Database
 - [Postgres](https://www.postgressql.org/) - Database
+- [Sequelize](https://sequelize.org/) - Node.js ORM
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 - [Express](https://expressjs.com/) - Server Framework
 - [ReactJs](https://reactjs.org/) - Web Framework
@@ -115,3 +134,7 @@ Add notes about how to use the system.
 - Hat tip to anyone whose code was used
 - Inspiration
 - References
+
+```
+
+```
