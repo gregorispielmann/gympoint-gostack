@@ -51,18 +51,33 @@ What things you need to install the software and how to install them.
 
 A step by step series of examples that tell you how to get a development env running.
 
-##
+### Cloning Repo
 
-You need to create the containers (Postgres and REDIS), after install docker run the following command on terminal
+```
+$ git clone https://github.com/gregorispielmann/gympoint-gostack.git
+```
+
+### Containers
+
+First of all you need to create the containers (Postgres and redis), after install docker run the following command on your terminal
 
 ```
 $ docker run --name gympoint -e POSTGRES_PASSWORD=docker -p 5454:5432 -d postgres:11
 To create the container for Postgres DB
 
 And then
+
 $ docker run --name redisgympoint -p 6363:6379 -d -t redis:alpine
 To create the container to Redis
+```
 
+### Backend
+
+To initialize the backend, enter backend folder and run yarn to install all dependencies. After this run the commands above to run the backend.
+
+```
+$ yarn dev
+This will start backend in dev mode
 ```
 
 And repeat
