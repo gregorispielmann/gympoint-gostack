@@ -3,14 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { MdChevronLeft, MdCheck } from 'react-icons/md';
-import { TiWarningOutline } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
-import * as Yup from 'yup';
 import ReactLoading from 'react-loading';
 import PropTypes from 'prop-types';
 
-import { format, parseISO, addMonths } from 'date-fns';
+import { format, addMonths } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
 import ReactSelect from '~/components/ReactSelect';
@@ -24,22 +22,14 @@ import {
   updateRegistrationRequest,
 } from '~/store/modules/registration/actions';
 import api from '~/services/api';
-
-function showError(message) {
-  return (
-    <div className="error">
-      <TiWarningOutline className="icon" /> {message}
-    </div>
-  );
-}
+import AsyncReactSelect from '~/components/AsyncSelect';
 
 export default function Registration({ location }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [editing, setEditing] = useState(false);
-  const [student, setStudent] = useState({});
-  const [students, setStudents] = useState([]);
-  const [plan, setPlan] = useState({});
+  const [student, setStudent] = useState([]);
+  const [plan, setPlan] = useState([]);
   const [plans, setPlans] = useState([]);
   const [newPrice, setNewPrice] = useState(0);
   const [newDuration, setNewDuration] = useState(0);
@@ -57,40 +47,19 @@ export default function Registration({ location }) {
       const res = await api.get(`/registrations/${id}`);
 
       setStudent({
-        id: res.data.student_id,
-        title: res.data.student.name,
+        value: res.data.student_id,
+        label: res.data.student.name,
       });
 
       setPlan({
-        id: res.data.plan_id,
-        title: res.data.plan.title,
+        value: res.data.plan_id,
+        label: res.data.plan.title,
       });
 
-      setNewPrice(res.data.plan.price);
       setNewDuration(res.data.plan.duration);
-      setStartDate(parseISO(res.data.start_date));
-      setEndDate(parseISO(res.data.end_date));
-
-      setNewTotal(
-        res.data.price.toLocaleString('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-        })
-      );
+      setNewPrice(res.data.plan.price);
 
       setEditing(true);
-    }
-
-    async function loadStudents() {
-      const res = await api.get('/students');
-
-      const data = res.data.map(s => {
-        return {
-          id: s.id,
-          title: s.name,
-        };
-      });
-      setStudents(data);
     }
 
     async function loadPlans() {
@@ -98,8 +67,8 @@ export default function Registration({ location }) {
 
       const data = res.data.map(p => {
         return {
-          id: p.id,
-          title: p.title,
+          value: p.id,
+          label: p.title,
           duration: p.duration,
           price: p.price,
         };
@@ -109,7 +78,6 @@ export default function Registration({ location }) {
 
     if (id) loadRegistration();
 
-    loadStudents();
     loadPlans();
   }, [id, location.state]);
 
@@ -128,23 +96,18 @@ export default function Registration({ location }) {
   /** HANDLE SUBMIT */
   function handleSubmit() {
     if (!editing) {
-      dispatch(addRegistrationRequest(student.id, plan.id, startDate));
+      dispatch(addRegistrationRequest(student.value, plan.value, startDate));
     } else {
-      dispatch(updateRegistrationRequest(id, student.id, plan.id, startDate));
+      dispatch(
+        updateRegistrationRequest(id, student.value, plan.value, startDate)
+      );
     }
   }
 
   return (
     <Container>
       <Content>
-        <Form
-          initialData={{
-            start_date: startDate,
-            student,
-            plan,
-          }}
-          onSubmit={handleSubmit}
-        >
+        <Form onSubmit={handleSubmit}>
           <menu>
             <h1>{editing ? 'Edição de Matrícula' : 'Cadastro de Matrícula'}</h1>
 
@@ -173,35 +136,25 @@ export default function Registration({ location }) {
             </div>
           </menu>
           <div className="form">
-            <span>aluno</span>
-            <ReactSelect
+            <AsyncReactSelect
               name="student"
-              options={students}
-              value={student}
+              label="aluno"
+              defaultValue={student}
               onChange={e => {
-                setStudent({
-                  title: e.title,
-                  id: e.id,
-                });
+                setStudent(e);
               }}
             />
             <br />
-            <span>plano</span>
             <ReactSelect
               name="plan"
+              label="plano"
+              defaultValue={plan}
               options={plans}
-              value={plan}
               onChange={e => {
-                setPlan({
-                  title: e.title,
-                  id: e.id,
-                });
-                setNewDuration(
-                  plans.filter(option => option.id === e.id)[0].duration
-                );
-                setNewPrice(
-                  plans.filter(option => option.id === e.id)[0].price
-                );
+                setPlan(e);
+                console.tron.log('plan', e);
+                setNewDuration(e.duration);
+                setNewPrice(e.price);
               }}
             />
             <br />

@@ -47,7 +47,8 @@ export const Content = styled.div`
       }
     }
 
-    span {
+    span,
+    label {
       color: #444;
       font-size: 14px;
       font-weight: bold;

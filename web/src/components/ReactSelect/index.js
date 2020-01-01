@@ -1,81 +1,53 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import PropTypes from 'prop-types';
 
-import { useField } from '@rocketseat/unform';
-import { selectStyle } from './styles';
+import PropTypes, { object, any } from 'prop-types';
+
+import { selectStyle } from '~/styles/select';
 
 export default function ReactSelect({
   name,
   label,
   options,
-  multiple,
+  defaultValue,
   ...rest
 }) {
-  const ref = useRef(null);
-  const { fieldName, registerField, defaultValue, error } = useField(name);
-
-  function parseSelectValue(selectRef) {
-    const selectValue = selectRef.state.value;
-    if (!multiple) {
-      return selectValue ? selectValue.id : '';
-    }
-
-    return selectValue ? selectValue.map(option => option.id) : [];
-  }
+  const [value, setValue] = useState();
 
   useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: ref.current,
-      path: 'state.value',
-      parseValue: parseSelectValue,
-      clearValue: selectRef => {
-        selectRef.select.clearValue();
-      },
-    });
-  }, [ref.current, fieldName]); // eslint-disable-line
-
-  function getDefaultValue() {
-    if (!defaultValue) return null;
-
-    if (!multiple) {
-      return options.find(option => option.id === defaultValue.id);
-    }
-
-    return options.filter(option => defaultValue.includes(option.id));
-  }
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   return (
     <>
-      {label && <label htmlFor={fieldName}>{label}</label>}
+      {label && <label htmlFor={name}>{label}</label>}
 
       <Select
-        name={fieldName}
-        aria-label={fieldName}
+        name={name}
         options={options}
-        isMulti={multiple}
-        defaultValue={getDefaultValue()}
-        ref={ref}
         styles={selectStyle}
-        getOptionValue={option => option.id}
-        getOptionLabel={option => option.title}
+        value={value}
+        getOptionValue={option => option.value}
+        getOptionLabel={option => option.label}
+        placeholder="Selecione uma opção"
+        noOptionsMessage={() => 'Nenhum resultado'}
         {...rest}
       />
-
-      {error && <span>{error}</span>}
     </>
   );
 }
 
 ReactSelect.propTypes = {
+  options: PropTypes.arrayOf(object).isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
-  multiple: PropTypes.bool,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.objectOf(any),
+    PropTypes.arrayOf(any),
+  ]),
 };
 
 ReactSelect.defaultProps = {
-  label: null,
-  multiple: false,
+  label: '',
+  defaultValue: null,
 };
