@@ -58,6 +58,8 @@ $ git clone https://github.com/gregorispielmann/gympoint-gostack.git
 
 First of all you need to create the containers (Postgres and redis), after install docker run the following command on your terminal
 
+**IMPORTANT! Replace ???? by an available port**
+
 ```
 $ docker run --name gympoint -e POSTGRES_PASSWORD=docker -p ????:5432 -d postgres:11
 To create the container for Postgres DB
@@ -68,8 +70,6 @@ $ docker run --name redisgympoint -p ????:6379 -d -t redis:alpine
 To create the container to Redis
 
 ```
-
-**IMPORTANT! Replace ???? by an available port**
 
 ### Backend
 
