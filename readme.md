@@ -67,8 +67,9 @@ And then
 $ docker run --name redisgympoint -p ????:6379 -d -t redis:alpine
 To create the container to Redis
 
-_Replace ???? by an available port_
 ```
+
+_Replace ???? by an available port_
 
 ### Backend
 
