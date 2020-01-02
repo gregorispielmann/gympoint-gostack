@@ -69,7 +69,7 @@ To create the container to Redis
 
 ```
 
-** IMPORTANT! _Replace ???? by an available port_ **
+**IMPORTANT! Replace ???? by an available port**
 
 ### Backend
 
