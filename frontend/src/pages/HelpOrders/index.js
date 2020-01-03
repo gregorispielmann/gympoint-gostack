@@ -19,7 +19,7 @@ export default function HelpOrders() {
     }
 
     loadHelpOrders();
-  }, [helpOrders]);
+  }, [isOpen]);
 
   function toggleModal() {
     setIsOpen(!isOpen);

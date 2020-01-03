@@ -22,7 +22,7 @@ class RegistrationController {
           {
             model: Student,
             as: 'student',
-            attributes: ['name', 'email'],
+            attributes: ['id', 'name', 'email'],
             where: {
               name: { [Op.iLike]: `%${q}%` },
             },
@@ -46,7 +46,7 @@ class RegistrationController {
         {
           model: Student,
           as: 'student',
-          attributes: ['name', 'email'],
+          attributes: ['id', 'name', 'email'],
         },
         {
           model: Plan,

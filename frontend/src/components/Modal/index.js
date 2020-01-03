@@ -42,6 +42,7 @@ export default function Modal({ show, id, onClose }) {
     }
 
     setShowModal(!showModal);
+    onClose();
   }
 
   return !showModal ? null : (

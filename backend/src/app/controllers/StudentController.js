@@ -8,7 +8,8 @@ class StudentController {
 
     if (q) {
       const students = await Student.findAll({
-        order: [['id', 'DESC']],
+        order: [['name', 'ASC']],
+        limit: '10',
         where: { name: { [Op.iLike]: `%${q}%` } },
       });
 
@@ -16,7 +17,7 @@ class StudentController {
     }
 
     const students = await Student.findAll({
-      order: [['id', 'DESC']],
+      order: [['name', 'ASC']],
     });
 
     return res.json(students);

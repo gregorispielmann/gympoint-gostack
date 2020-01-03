@@ -94,7 +94,9 @@ export default function Students() {
               {registrations.length > 0 ? (
                 registrations.map(r => (
                   <tr key={r.id}>
-                    <td>{r.student.name}</td>
+                    <td>
+                      {r.student.name} (ID: {r.student.id})
+                    </td>
                     <td>{r.plan.title}</td>
                     <td>
                       {format(

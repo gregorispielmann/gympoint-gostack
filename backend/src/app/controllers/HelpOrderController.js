@@ -5,13 +5,9 @@ class HelpOrderController {
   async index(req, res) {
     const { id } = req.params;
 
-    const { page = 1 } = req.query;
-
     const helpOrders = await HelpOrder.findAll({
       where: { student_id: id },
       order: [['updatedAt', 'DESC']],
-      limit: 5,
-      offset: (page - 1) * 5,
     });
 
     return res.json(helpOrders);

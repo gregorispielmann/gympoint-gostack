@@ -6,7 +6,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { set } from 'date-fns/esm';
 import { Container, Content, List, ButtonHelp } from './styles';
 
 import { signOut } from '~/store/modules/auth/actions';
@@ -20,8 +19,6 @@ export default function HelpOrders({ navigation }) {
   const dispatch = useDispatch();
 
   const [helpOrders, setHelpOrders] = useState([]);
-  const [page, setPage] = useState(1);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const loading = useSelector(state => state.helpOrder.loading);
@@ -32,16 +29,11 @@ export default function HelpOrders({ navigation }) {
   }
 
   async function loadHelpOrders() {
-    setIsLoadingMore(true);
+    const res = await api.get(`students/${id}/help-orders`);
 
-    const res = await api.get(`students/${id}/help-orders?page=${page}`);
-
-    if (!isLoadingMore && res.data.length > 0) {
-      setHelpOrders(prevState => [...prevState, ...res.data]);
-      setPage(page + 1);
+    if (res.data.length > 0) {
+      setHelpOrders(res.data);
     }
-
-    setIsLoadingMore(false);
   }
 
   useEffect(() => {
@@ -52,20 +44,11 @@ export default function HelpOrders({ navigation }) {
     navigation.setParams({ handleLogout });
   }, []);
 
-  function renderFooter() {
-    if (!isLoadingMore) return null;
-    return <ActivityIndicator />;
-  }
-
   async function onRefresh() {
-    setIsRefreshing(true);
-    setPage(1);
-
-    const res = await api.get(`students/${id}/help-orders?page=${page}`);
+    const res = await api.get(`students/${id}/help-orders`);
 
     if (res.data.length > 0) {
       setHelpOrders(res.data);
-      setPage(page + 1);
     }
 
     setIsRefreshing(false);
@@ -84,9 +67,6 @@ export default function HelpOrders({ navigation }) {
         </ButtonHelp>
 
         <List
-          onEndReachedThreshold={0}
-          onEndReached={loadHelpOrders}
-          ListFooterComponent={renderFooter}
           refreshControl={
             <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
           }

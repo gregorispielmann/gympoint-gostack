@@ -21,7 +21,12 @@ const promiseOptions = inputValue =>
     resolve(filterOptions(inputValue));
   });
 
-export default function ReactAsyncSelect({ name, label, defaultValue }) {
+export default function ReactAsyncSelect({
+  name,
+  label,
+  defaultValue,
+  onChange,
+}) {
   const [value, setValue] = useState();
 
   useEffect(() => {
@@ -44,6 +49,7 @@ export default function ReactAsyncSelect({ name, label, defaultValue }) {
         value={value}
         name={name}
         onChange={i => {
+          onChange(i);
           setValue(i);
         }}
       />

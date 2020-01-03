@@ -8,7 +8,7 @@ import { Form, Input } from '@rocketseat/unform';
 import ReactLoading from 'react-loading';
 import PropTypes from 'prop-types';
 
-import { format, addMonths } from 'date-fns';
+import { format, addMonths, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
 import ReactSelect from '~/components/ReactSelect';
@@ -50,6 +50,8 @@ export default function Registration({ location }) {
         value: res.data.student_id,
         label: res.data.student.name,
       });
+
+      setStartDate(parseISO(res.data.start_date));
 
       setPlan({
         value: res.data.plan_id,
@@ -140,9 +142,7 @@ export default function Registration({ location }) {
               name="student"
               label="aluno"
               defaultValue={student}
-              onChange={e => {
-                setStudent(e);
-              }}
+              onChange={s => setStudent(s)}
             />
             <br />
             <ReactSelect
@@ -152,7 +152,6 @@ export default function Registration({ location }) {
               options={plans}
               onChange={e => {
                 setPlan(e);
-                console.tron.log('plan', e);
                 setNewDuration(e.duration);
                 setNewPrice(e.price);
               }}

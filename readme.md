@@ -141,7 +141,8 @@ Password: 123456
 
 ### Mobile
 
-You will only need an ID from a student with an active registration
+You will only need an ID from a student with an active registration.
+In HelpOrders Page you need to use "Pull To Refresh" to see if there is any update in your help orders.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
