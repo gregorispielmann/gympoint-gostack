@@ -1,30 +1,32 @@
-APP_URL=
+APP_URL=http://localhost:3333
 NODE_ENV=development
 
 # AUTH
 
-APP_SECRET=
+APP_SECRET=yoursecret
 
 #DATABASE
 
-DB_HOST=
-DB_PORT=
-DB_NAME=
-DB_USER=
-DB_PASS=
+DB_HOST=localhost
+DB_PORT=????
+DB_NAME=gympoint
+DB_USER=postgres
+DB_PASS=docker
 
 #REDIS
 
-REDIS_HOST=
-REDIS_PORT=
+REDIS_HOST=127.0.0.1
+REDIS_PORT=????
 
 #MAIL
+# you will need an account on mailtrap.io to teste this
 
-MAIL_HOST=
+MAIL_HOST=smtp.mailtrap.io
 MAIL_PORT=
 MAIL_USER=
 MAIL_PASS=
 
 #SENTRY
+# An sentry account is necesssary for this
 
 SENTRY_DNS=

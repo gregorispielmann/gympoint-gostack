@@ -71,9 +71,15 @@ To create the container to Redis
 
 ```
 
+### Database
+
+Before run backend we will need create the postgres database in our container. For this I highly recommend you to use [Postbird](https://github.com/Paxa/postbird). Then connect with your information and create the database with name 'gympoint' before you go to next step.
+
 ### Backend
 
-After create and run all containers you will need to initialize the backend.
+After create and run all containers, create the postgres database you will be ready to initialize the backend.
+
+Inside the backend folder run commands below.
 
 ```
 $ yarn
