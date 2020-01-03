@@ -23,6 +23,8 @@ export function* signIn({ payload }) {
     yield put(signInSuccess(id, active));
     Alert.alert('Logado!', `ID ${id} logado com sucesso!`);
   } catch (e) {
+    Alert.alert('Matrícula não encontrada para este ID');
+
     yield put(signInFailure());
   }
 }
