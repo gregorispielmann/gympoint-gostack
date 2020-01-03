@@ -33,7 +33,9 @@ export default function Plans() {
         const res = await api.get(`plans`);
         setPlans(res.data);
       } catch (e) {
-        toast.error('Erro ao remover o plano!');
+        toast.error(
+          'Erro ao remover o plano! Verifique se não há matrículas com este plano'
+        );
       }
     }
   }

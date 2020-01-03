@@ -99,6 +99,9 @@ After this you only need to run command below
 ```
 $ yarn dev
 This will start backend in dev mode
+
+$ yarn queue
+This will start the redis task queue
 ```
 
 ### Frontend (Web)

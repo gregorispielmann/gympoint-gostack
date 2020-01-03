@@ -37,7 +37,7 @@ export default function Students() {
         setStudents(studentData.data);
       } catch (e) {
         toast.error(
-          'Erro ao remover aluno! Verifique se não possui matrícula!'
+          'Erro ao remover aluno! Verifique se este aluno possui matrícula!'
         );
       }
     }
