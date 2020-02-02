@@ -106,24 +106,24 @@ This will start the redis task queue
 
 ### Frontend (Web)
 
-## Demo
+### Demo
 
 <div style="display: flex;">
 
-<img src="screenshots/screenshot1.png" width="33%">
-<img src="screenshots/screenshot2.png" width="33%">
-<img src="screenshots/screenshot3.png" width="33%">
-<img src="screenshots/screenshot4.png" width="33%">
-<img src="screenshots/screenshot5.png" width="33%">
-<img src="screenshots/screenshot6.png" width="33%">
-<img src="screenshots/screenshot7.png" width="33%">
-<img src="screenshots/screenshot8.png" width="33%">
-<img src="screenshots/screenshot9.png" width="33%">
-<img src="screenshots/screenshot10.png" width="33%">
+<img src="screenshots/screenshot1.png" width="50%">
+<img src="screenshots/screenshot2.png" width="50%">
+<img src="screenshots/screenshot3.png" width="50%">
+<img src="screenshots/screenshot4.png" width="50%">
+<img src="screenshots/screenshot5.png" width="50%">
+<img src="screenshots/screenshot6.png" width="50%">
+<img src="screenshots/screenshot7.png" width="50%">
+<img src="screenshots/screenshot8.png" width="50%">
+<img src="screenshots/screenshot9.png" width="50%">
+<img src="screenshots/screenshot10.png" width="50%">
 
 </div>
 
-## How it runs?
+### How it runs?
 
 After run backend.
 
